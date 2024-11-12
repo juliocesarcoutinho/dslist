@@ -1,4 +1,4 @@
-package com.topone.dslist.repository;
+package com.topone.dslist.repositories;
 
 import com.topone.dslist.entities.Game;
 import org.springframework.data.jpa.repository.JpaRepository;
