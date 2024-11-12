@@ -3,6 +3,7 @@ package com.topone.dslist.services;
 import com.topone.dslist.dto.GameDTO;
 import com.topone.dslist.dto.GameMinDTO;
 import com.topone.dslist.entities.Game;
+import com.topone.dslist.projections.GameMinProjection;
 import com.topone.dslist.repositories.GameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,4 +32,10 @@ public class GameService {
         Game entity = repository.findById(id).orElseThrow();
         return new GameDTO(entity);
     }
+
+    public List<GameMinDTO> findByListId(Long id) {
+        List<GameMinProjection> result = repository.searchByList(id);
+        return result.stream().map(GameMinDTO::new).toList();
+    }
+
 }
